@@ -4,9 +4,10 @@ export function getGoogleLoginUrl(returnPath?: string): string {
     throw new Error('Google OAuth Client ID not configured');
   }
 
-  const baseUrl = (import.meta.env.VITE_API_URL || window.location.origin).replace(/\/$/, "");
-  const redirectUri = `${baseUrl}/api/oauth/google/callback`;
-  
+  // Always use the current window origin for the redirect URI
+  // This ensures it matches exactly what's registered in Google Console
+  const redirectUri = `${window.location.origin}/api/oauth/google/callback`;
+
   // Create state with return path
   const state = btoa(JSON.stringify({
     returnPath: returnPath || '/dashboard',
