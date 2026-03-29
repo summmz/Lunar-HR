@@ -1,0 +1,751 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Scandinavian aesthetic - pale cool gray background */
+  --primary: oklch(0.65 0.15 220);
+  --primary-foreground: oklch(0.1 0.01 240);
+  --sidebar-primary: oklch(0.65 0.15 220);
+  --sidebar-primary-foreground: oklch(0.96 0.01 240);
+  
+  /* Soft pastel blue and blush pink accents */
+  --chart-1: oklch(0.75 0.12 220);
+  --chart-2: oklch(0.75 0.12 350);
+  --chart-3: oklch(0.65 0.15 220);
+  --chart-4: oklch(0.65 0.15 350);
+  --chart-5: oklch(0.55 0.18 220);
+  
+  --radius: 0.65rem;
+  --background: oklch(0.96 0.01 240);
+  --foreground: oklch(0.1 0.01 240);
+  --card: oklch(0.98 0.005 240);
+  --card-foreground: oklch(0.1 0.01 240);
+  --popover: oklch(0.98 0.005 240);
+  --popover-foreground: oklch(0.1 0.01 240);
+  --secondary: oklch(0.75 0.12 350);
+  --secondary-foreground: oklch(0.1 0.01 240);
+  --muted: oklch(0.75 0.01 240);
+  --muted-foreground: oklch(0.35 0.01 240);
+  --accent: oklch(0.65 0.15 220);
+  --accent-foreground: oklch(0.1 0.01 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.005 240);
+  --input: oklch(0.88 0.005 240);
+  --ring: oklch(0.65 0.15 220);
+  --sidebar: oklch(0.96 0.01 240);
+  --sidebar-foreground: oklch(0.1 0.01 240);
+  --sidebar-accent: oklch(0.75 0.01 240);
+  --sidebar-accent-foreground: oklch(0.1 0.01 240);
+  --sidebar-border: oklch(0.88 0.005 240);
+  --sidebar-ring: oklch(0.65 0.15 220);
+}
+
+.dark {
+  --primary: oklch(0.65 0.15 220);
+  --primary-foreground: oklch(0.96 0.01 240);
+  --sidebar-primary: oklch(0.65 0.15 220);
+  --sidebar-primary-foreground: oklch(0.96 0.01 240);
+  --background: oklch(0.12 0.01 240);
+  --foreground: oklch(0.92 0.01 240);
+  --card: oklch(0.18 0.01 240);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.18 0.01 240);
+  --popover-foreground: oklch(0.92 0.01 240);
+  --secondary: oklch(0.75 0.12 350);
+  --secondary-foreground: oklch(0.92 0.01 240);
+  --muted: oklch(0.25 0.01 240);
+  --muted-foreground: oklch(0.75 0.01 240);
+  --accent: oklch(0.65 0.15 220);
+  --accent-foreground: oklch(0.92 0.01 240);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.32 0.025 240);
+  --input: oklch(0.28 0.015 240);
+  --ring: oklch(0.65 0.15 220);
+  --chart-1: oklch(0.75 0.12 220);
+  --chart-2: oklch(0.75 0.12 350);
+  --chart-3: oklch(0.65 0.15 220);
+  --chart-4: oklch(0.65 0.15 350);
+  --chart-5: oklch(0.55 0.18 220);
+  --sidebar: oklch(0.18 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-accent: oklch(0.25 0.01 240);
+  --sidebar-accent-foreground: oklch(0.92 0.01 240);
+  --sidebar-border: oklch(0.28 0.02 240);
+  --sidebar-ring: oklch(0.65 0.15 220);
+}
+
+@layer base {
+  * {
+    cursor: none !important;
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer base {
+  html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    cursor: none;
+  }
+
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    @apply text-3xl font-bold tracking-tight;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    @apply text-sm font-light text-muted-foreground;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Scandinavian card styling */
+  .card-scandinavian {
+    @apply bg-card text-card-foreground rounded-xl p-6;
+    border: 1px solid oklch(0.32 0.025 240);
+    box-shadow:
+      0 0 0 1px oklch(0.38 0.04 230 / 0.3),
+      0 2px 12px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 oklch(0.42 0.03 240 / 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-scandinavian:hover {
+    border-color: oklch(0.45 0.06 230);
+    box-shadow:
+      0 0 0 1px oklch(0.55 0.1 220 / 0.35),
+      0 4px 20px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 oklch(0.5 0.05 240 / 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Enhanced card variations */
+  .card-interactive {
+    @apply bg-card text-card-foreground rounded-xl p-6;
+    border: 1px solid oklch(0.32 0.025 240);
+    box-shadow:
+      0 0 0 1px oklch(0.38 0.04 230 / 0.3),
+      0 2px 12px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 oklch(0.42 0.03 240 / 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply cursor-pointer active:scale-95;
+  }
+  .card-interactive:hover {
+    border-color: oklch(0.55 0.1 220);
+    box-shadow:
+      0 0 0 1px oklch(0.55 0.1 220 / 0.4),
+      0 6px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 oklch(0.5 0.05 240 / 0.2);
+    transform: translateY(-2px);
+  }
+
+  .card-elevated {
+    @apply rounded-xl p-6 bg-card text-card-foreground;
+    border: 1px solid oklch(0.32 0.025 240);
+    box-shadow:
+      0 0 0 1px oklch(0.38 0.04 230 / 0.3),
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 oklch(0.42 0.03 240 / 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-filled {
+    @apply rounded-lg p-6 text-card-foreground;
+    background: linear-gradient(135deg, rgba(123, 140, 255, 0.2) 0%, rgba(232, 165, 197, 0.1) 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Soft shadows */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold;
+    @apply hover:bg-primary/90 active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    transition: all 0.15s ease-out;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg bg-secondary text-secondary-foreground font-semibold;
+    @apply hover:bg-secondary/90 active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    transition: all 0.15s ease-out;
+  }
+
+  .btn-outline {
+    @apply px-4 py-2 rounded-lg border-2 border-primary text-primary;
+    @apply hover:bg-primary/5 active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    transition: all 0.15s ease-out;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 rounded-lg text-foreground;
+    @apply hover:bg-muted/50 active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    transition: all 0.15s ease-out;
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center;
+    @apply hover:bg-muted active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    transition: all 0.15s ease-out;
+  }
+
+  /* Form inputs with interactive states */
+  .input-styled {
+    @apply px-3 py-2 rounded-lg border-2 border-border bg-input text-foreground;
+    @apply placeholder:text-muted-foreground;
+    @apply hover:border-primary/50;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset focus:ring-offset-0;
+    transition: all 0.15s ease-out;
+  }
+
+  .textarea-styled {
+    @apply px-3 py-2 rounded-lg border-2 border-border bg-input text-foreground;
+    @apply placeholder:text-muted-foreground;
+    @apply hover:border-primary/50;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset focus:ring-offset-0 resize-none;
+    transition: all 0.15s ease-out;
+  }
+
+  .select-styled {
+    @apply px-3 py-2 rounded-lg border-2 border-border bg-input text-foreground;
+    @apply hover:border-primary/50;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset focus:ring-offset-0;
+    transition: all 0.15s ease-out;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply border-2 border-muted border-t-primary rounded-full;
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .loading-pulse {
+    @apply animate-pulse opacity-60;
+  }
+
+  /* Badge variations */
+  .badge-primary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-primary/10 text-primary;
+  }
+
+  .badge-secondary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-secondary/10 text-secondary;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  /* Geometric shapes */
+  .shape-circle-sm {
+    @apply w-8 h-8 rounded-full;
+  }
+
+  .shape-circle-md {
+    @apply w-16 h-16 rounded-full;
+  }
+
+  .shape-accent-blue {
+    @apply bg-primary/20;
+  }
+
+  .shape-accent-pink {
+    @apply bg-secondary/20;
+  }
+
+  /* Interactive divider */
+  .divider-interactive {
+    @apply h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  /* Text utilities */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 8px rgba(123, 140, 255, 0.3);
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+
+/* Scandinavian animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(123, 140, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(123, 140, 255, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Interactive animations */
+@keyframes button-press {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes card-hover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes input-focus {
+  0% {
+    box-shadow: 0 0 0 0 rgba(123, 140, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(123, 140, 255, 0);
+  }
+}
+
+
+/* Transition utility classes - defined as plain CSS for Tailwind v4 compatibility */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-fast {
+  transition: all 0.15s ease-out;
+}
+
+.transition-slower {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Utility classes - defined outside @layer for @apply compatibility */
+/* Animation utilities */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 1000px 100%;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-button-press {
+  animation: button-press 0.2s ease-out;
+}
+
+.animate-card-hover {
+  animation: card-hover 0.3s ease-out forwards;
+}
+
+/* Transition utilities */
+/* Interactive states */
+.hover-lift {
+  @apply hover:shadow-lg hover:scale-105;
+}
+
+.hover-glow {
+  @apply hover:shadow-lg hover:shadow-primary/20;
+}
+
+.active-press {
+  @apply active:scale-95;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+}
+
+.focus-ring-inset {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset focus:ring-offset-0;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, rgba(123, 140, 255, 0.6) 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--secondary) 0%, rgba(232, 165, 197, 0.6) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, rgba(123, 140, 255, 0.2) 0%, rgba(232, 165, 197, 0.1) 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-dark {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply relative overflow-hidden;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Depth effects */
+.depth-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.depth-2 {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.depth-3 {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.depth-4 {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.depth-5 {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* Responsive text */
+.text-responsive {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+}
+
+/* Smooth reveal */
+.reveal {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.reveal-0 {
+  animation-delay: 0s;
+}
+
+.reveal-1 {
+  animation-delay: 0.1s;
+}
+
+.reveal-2 {
+  animation-delay: 0.2s;
+}
+
+.reveal-3 {
+  animation-delay: 0.3s;
+}
+
+.reveal-4 {
+  animation-delay: 0.4s;
+}
+
+.reveal-5 {
+  animation-delay: 0.5s;
+}

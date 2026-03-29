@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1774633928138,
+      "tag": "0000_greedy_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1774634640604,
+      "tag": "0001_stale_rick_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1774634640605,
+      "tag": "0002_leave_attendance",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1774634640606,
+      "tag": "0003_link_users_employees",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1774781568283,
+      "tag": "0004_early_lester",
+      "breakpoints": true
+    }
+  ]
+}

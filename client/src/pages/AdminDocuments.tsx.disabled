@@ -1,0 +1,7 @@
+// Document uploads have been disabled
+// This page is no longer used in the application
+// To re-enable, restore from git history
+
+export default function AdminDocuments() {
+  return null;
+}
