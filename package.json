@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "db:push": "drizzle-kit generate && drizzle-kit migrate",
-    "build:server": "esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist"
+    "build:server": "node esbuild.server.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
