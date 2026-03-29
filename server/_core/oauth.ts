@@ -75,7 +75,12 @@ export function registerOAuthRoutes(app: Express) {
 
       const dashboardPath =
         user.role === "admin" ? "/admin/dashboard" : "/user/dashboard";
-      res.redirect(302, dashboardPath);
+
+      const finalRedirectUrl = ENV.frontendUrl
+        ? `${ENV.frontendUrl.replace(/\/$/, "")}${dashboardPath}`
+        : dashboardPath;
+
+      res.redirect(302, finalRedirectUrl);
     } catch (error) {
       console.error("[Google OAuth] Callback failed:", error);
       res.status(500).json({ error: "OAuth callback failed" });

@@ -9,6 +9,7 @@ export const ENV = {
   // Explicit app URL for OAuth redirect URIs — avoids protocol detection issues behind proxies.
   // Set this to your full origin e.g. https://yourdomain.com in production.
   appUrl: process.env.APP_URL ?? "",
+  frontendUrl: process.env.FRONTEND_URL ?? "",
 };
 
 export type EnvType = typeof ENV;
