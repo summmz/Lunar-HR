@@ -36,9 +36,24 @@ async function startServer() {
   const server = createServer(app);
 
   // Enable CORS for frontend
+  const allowedOrigins = [
+    ENV.frontendUrl,
+    "https://lunar-hr.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:5173",
+  ].filter(Boolean) as string[];
+
   app.use(
     cors({
-      origin: [ENV.frontendUrl, "http://localhost:3000", "http://localhost:5173"].filter(Boolean) as string[],
+      origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error(`CORS blocked: ${origin}`));
+        }
+      },
       credentials: true,
     })
   );
