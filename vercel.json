@@ -3,8 +3,8 @@
   "outputDirectory": "dist/public",
   "rewrites": [
     {
-      "source": "/api/trpc/:path*",
-      "destination": "https://lunar-hr-production.up.railway.app/api/trpc/:path*"
+      "source": "/api/:path*",
+      "destination": "https://lunar-hr-production.up.railway.app/api/:path*"
     },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
