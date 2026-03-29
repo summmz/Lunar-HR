@@ -3,12 +3,8 @@
   "outputDirectory": "dist/public",
   "rewrites": [
     {
-      "source": "/api/oauth/:path*",
-      "destination": "https://lunar-hr-production.up.railway.app/api/oauth/:path*"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://lunar-hr-production.up.railway.app/api/:path*"
+      "source": "/api/trpc/:path*",
+      "destination": "https://lunar-hr-production.up.railway.app/api/trpc/:path*"
     },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
