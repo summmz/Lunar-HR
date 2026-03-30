@@ -28,10 +28,10 @@ export default function UserDashboard() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-4xl font-bold text-foreground">Welcome, {user?.name}</h1>
-          <p className="subtitle mt-2">Your personal HR dashboard</p>
+          <h1 className="text-2xl sm:text-4xl font-bold text-foreground">Welcome, {user?.name?.split(" ")[0]}</h1>
+          <p className="subtitle mt-1">Your personal HR dashboard</p>
         </div>
         <Button
           onClick={handleLogout}

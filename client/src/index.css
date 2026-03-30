@@ -119,22 +119,44 @@
 
 @layer base {
   * {
-    cursor: none !important;
     @apply border-border outline-ring/50;
+  }
+  /* Custom cursor only on non-touch devices */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]),
+    [type="button"]:not(:disabled),
+    [type="submit"]:not(:disabled),
+    [type="reset"]:not(:disabled),
+    a[href],
+    select:not(:disabled),
+    input[type="checkbox"]:not(:disabled),
+    input[type="radio"]:not(:disabled) {
+      cursor: pointer !important;
+    }
+  }
+  /* On touch devices, restore native cursors */
+  @media (pointer: coarse) {
+    * {
+      cursor: auto;
+    }
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]),
+    a[href] {
+      cursor: pointer;
+      /* Minimum touch target size */
+      min-height: 44px;
+    }
+    /* Inputs need comfortable tap targets */
+    input, select, textarea {
+      font-size: 16px; /* prevent iOS zoom on focus */
+    }
   }
   body {
     @apply bg-background text-foreground;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
   }
 }
 
@@ -143,7 +165,10 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
-    cursor: none;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (pointer: fine) {
+    html, body { cursor: none; }
   }
 
   html::-webkit-scrollbar, body::-webkit-scrollbar {
@@ -151,13 +176,15 @@
   }
 
   h1 {
-    @apply text-4xl font-bold tracking-tight;
+    @apply font-bold tracking-tight;
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.02em;
   }
 
   h2 {
-    @apply text-3xl font-bold tracking-tight;
+    @apply font-bold tracking-tight;
+    font-size: clamp(1.25rem, 4vw, 1.875rem);
     font-weight: 800;
     letter-spacing: -0.02em;
   }
@@ -204,7 +231,8 @@
 
   /* Scandinavian card styling */
   .card-scandinavian {
-    @apply bg-card text-card-foreground rounded-xl p-6;
+    @apply bg-card text-card-foreground rounded-xl;
+    padding: clamp(1rem, 4vw, 1.5rem);
     border: 1px solid oklch(0.32 0.025 240);
     box-shadow:
       0 0 0 1px oklch(0.38 0.04 230 / 0.3),
@@ -553,6 +581,31 @@
   }
 }
 
+
+/* Safe-area support for iOS notch/home indicator */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Smooth scrolling on mobile */
+@media (pointer: coarse) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Tables scroll horizontally on mobile */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  /* Prevent text selection on tap for interactive elements */
+  button, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+}
 
 /* Transition utility classes - defined as plain CSS for Tailwind v4 compatibility */
 .transition-smooth {

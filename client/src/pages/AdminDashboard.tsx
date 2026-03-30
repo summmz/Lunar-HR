@@ -33,10 +33,10 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-4xl font-bold text-foreground">Admin Dashboard</h1>
-          <p className="subtitle mt-2">System overview and management controls</p>
+          <h1 className="text-2xl sm:text-4xl font-bold text-foreground">Admin Dashboard</h1>
+          <p className="subtitle mt-1">System overview and management controls</p>
         </div>
         <Button
           onClick={() => navigate('/admin/settings')}

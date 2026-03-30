@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 
+// Only render on devices with a fine pointer (mouse)
+const isTouchDevice = () =>
+  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
 export default function BlobCursor() {
+  if (isTouchDevice()) return null;
   const blobRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const target = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });

@@ -1,14 +1,15 @@
 export function getGoogleLoginUrl(returnPath?: string): string {
   const clientId = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
-  if (!clientId) {
-    throw new Error('Google OAuth Client ID not configured');
+
+  if (!clientId || clientId === 'your-google-client-id') {
+    throw new Error(
+      'VITE_GOOGLE_OAUTH_CLIENT_ID is not configured. ' +
+      'Copy .env.example to .env.local and fill in your Google OAuth credentials.'
+    );
   }
 
-  // Always use the current window origin for the redirect URI
-  // This ensures it matches exactly what's registered in Google Console
   const redirectUri = `${window.location.origin}/api/oauth/google/callback`;
 
-  // Create state with return path
   const state = btoa(JSON.stringify({
     returnPath: returnPath || '/dashboard',
   }));
@@ -24,11 +25,11 @@ export function getGoogleLoginUrl(returnPath?: string): string {
   return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 }
 
-export function handleGoogleLoginClick(returnPath?: string) {
-  try {
-    const url = getGoogleLoginUrl(returnPath);
-    window.location.href = url;
-  } catch (error) {
-    console.error('Failed to generate Google login URL:', error);
-  }
+/**
+ * Redirects to Google OAuth. Throws a descriptive Error if not configured.
+ * Callers should catch and display the message to the user.
+ */
+export function handleGoogleLoginClick(returnPath?: string): void {
+  const url = getGoogleLoginUrl(returnPath);
+  window.location.href = url;
 }
