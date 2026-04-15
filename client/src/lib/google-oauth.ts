@@ -8,7 +8,8 @@ export function getGoogleLoginUrl(returnPath?: string): string {
     );
   }
 
-  const redirectUri = `${window.location.origin}/api/oauth/google/callback`;
+  const apiUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+  const redirectUri = `${apiUrl}/api/oauth/google/callback`;
 
   const state = btoa(JSON.stringify({
     returnPath: returnPath || '/dashboard',
